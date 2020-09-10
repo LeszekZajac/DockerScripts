@@ -11,7 +11,8 @@ services:
       - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_DEFAULT_VHOST}
     volumes: 
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-
+    ports: 
+      -03192:15692
   rabbitmq2:
     image: rabbitmq:3-management
     hostname: rabbitmq2
@@ -21,6 +22,8 @@ services:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
+    ports: 
+      -03292:15692
 
   rabbitmq3:
     image: rabbitmq:3-management
@@ -31,7 +34,8 @@ services:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
     entrypoint: /usr/local/bin/cluster-entrypoint.sh
-    
+    ports: 
+      -03392:15692
   haproxy:
     image: haproxy:1.7
     volumes:
@@ -41,5 +45,5 @@ services:
       - rabbitmq2
       - rabbitmq3
     ports:
-      - 15672:15672
+      - 03072:15672
       - 5672:5672
