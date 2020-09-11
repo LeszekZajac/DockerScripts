@@ -47,5 +47,5 @@ services:
       - rabbitmq2
       - rabbitmq3
     ports:
-      - 66720:15672
+      - 46720:15672
       - 56720:5672
