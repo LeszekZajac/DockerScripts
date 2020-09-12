@@ -22,8 +22,8 @@ services:
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbit-definition.json:/etc/rabbitmq/rabbit-mq-definition.json
-      - ./rabit.config:/etc/rabbitmq/rabit.config
+      - ./rabbit-definition.json:/etc/rabbitmq/rabbit-definition.json
+      - ./rabbit.config:/etc/rabbitmq/rabbit.config
 #    entrypoint: /usr/local/bin/cluster-entrypoint.sh
     ports: 
       - 56922:15692
@@ -36,8 +36,8 @@ services:
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbit-definition.json:/etc/rabbitmq/rabbit-mq-definition.json
-      - ./rabit.config:/etc/rabbitmq/rabit.config
+      - ./rabbit-definition.json:/etc/rabbitmq/rabbit-definition.json
+      - ./rabbit.config:/etc/rabbitmq/rabbit.config
 #    entrypoint: /usr/local/bin/cluster-entrypoint.sh
     ports: 
       - 56923:15692
