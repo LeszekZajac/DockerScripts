@@ -38,9 +38,9 @@ services:
     hostname: rabbitmq3
     depends_on:
       - rabbitmq1
-      environment:
-        - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
-        - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
+    environment:
+      - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
+      - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
