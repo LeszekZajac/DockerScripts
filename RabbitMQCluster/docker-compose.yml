@@ -6,6 +6,8 @@ services:
     image: rabbitmq:3-management
     hostname: rabbitmq1
     environment:
+      - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
+      - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_DEFAULT_VHOST}
@@ -19,11 +21,14 @@ services:
     hostname: rabbitmq2
     depends_on:
       - rabbitmq1
+    environment:
+      - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
+      - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbit-definition.json:/etc/rabbitmq/rabbit-definition.json
-      - ./rabbit.config:/etc/rabbitmq/rabbit.config
+      - ./rabbitmq-definition.json:/etc/rabbitmq/rabbitmq-definition.json
+      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
 #    entrypoint: /usr/local/bin/cluster-entrypoint.sh
     ports: 
       - 56922:15692
@@ -33,11 +38,14 @@ services:
     hostname: rabbitmq3
     depends_on:
       - rabbitmq1
+      environment:
+        - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
+        - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbit-definition.json:/etc/rabbitmq/rabbit-definition.json
-      - ./rabbit.config:/etc/rabbitmq/rabbit.config
+      - ./rabbitmq-definition.json:/etc/rabbitmq/rabbitmq-definition.json
+      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
 #    entrypoint: /usr/local/bin/cluster-entrypoint.sh
     ports: 
       - 56923:15692
