@@ -5,7 +5,5 @@
 
  cd DockerScripts
 
- chmod 600 .erlang.cookie
-
- docker-compose up -d
+ ./rabbit-mq-cluster-run.sh
 ```
