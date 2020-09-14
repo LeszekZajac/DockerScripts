@@ -6,8 +6,6 @@ services:
     image: rabbitmq:3-management
     hostname: rabbitmq1
     environment:
-      - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
-      - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_DEFAULT_VHOST}
@@ -22,8 +20,8 @@ services:
     depends_on:
       - rabbitmq1
     environment:
-      - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
-      - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
@@ -39,8 +37,8 @@ services:
     depends_on:
       - rabbitmq1
     environment:
-      - RABBITMQ_CONFIG_FILE=${RABBITMQ_CONFIG_FILE}
-      - RABBITMQ_ADVANCED_CONFIG_FILE={RABBITMQ_ADVANCED_CONFIG_FILE}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     volumes:
       - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
