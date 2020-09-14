@@ -24,7 +24,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     volumes:
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+      - ./advanced.config:/etc/rabbitmq/advanced.config:ro
     ports: 
       - 56922:15692
 
@@ -38,7 +38,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     volumes:
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+      - ./advanced.config:/etc/rabbitmq/advanced.config:ro
     ports: 
       - 56923:15692
 
