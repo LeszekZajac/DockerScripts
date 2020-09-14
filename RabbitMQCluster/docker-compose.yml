@@ -23,11 +23,8 @@ services:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     volumes:
-      - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbitmq-definition.json:/etc/rabbitmq/rabbitmq-definition.json
       - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
-#    entrypoint: /usr/local/bin/cluster-entrypoint.sh
     ports: 
       - 56922:15692
 
@@ -40,11 +37,8 @@ services:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
     volumes:
-      - ./cluster-entrypoint.sh:/usr/local/bin/cluster-entrypoint.sh
       - ./.erlang.cookie:/var/lib/rabbitmq/.erlang.cookie
-      - ./rabbitmq-definition.json:/etc/rabbitmq/rabbitmq-definition.json
       - ./rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
-#    entrypoint: /usr/local/bin/cluster-entrypoint.sh
     ports: 
       - 56923:15692
 
